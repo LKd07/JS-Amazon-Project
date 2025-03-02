@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      basketball
+    </title>
+  </head>
+  <body>
+    <script>
+      const ob1 ={
+        name:'basketball',
+        price:2095
+      }
+      ob1.price += 500;
+      ob1['dilivery-time'] = '3 days';
+      console.log(ob1);
+      const product1 ={
+        name: 'baseball',
+        price: 2300
+      }
+      const product2 ={
+        name: 'football',
+        price: 3200
+      }
+      function comparePrice(product1, product2){
+        return product1.price < product2.price ? product1.name : product2.name;
+      }
+      console.log(comparePrice(product1,product2));
+      console.log('HEY'.toLowerCase());
+      console.log('hey'.repeat(3));
+    </script>
+  </body>
+</html>

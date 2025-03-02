@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Calculator
+    </title>
+    <style>
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        color: white;
+        margin: 0;
+        height: 100%;
+        
+      }
+      html {
+        height: 100%; /* 确保 html 占满整个视口高度 */
+      }
+      button{
+        background-color: rgb(59, 58, 58);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border: none;
+        font-family: Arial;
+        font-size: 22px;
+        border-radius: 25px;
+      }
+      .clearButton{
+        font-size: smaller;
+      }
+      .sign{
+        background-color: rgb(255, 166, 0);
+      }
+      .out{
+        font-family: Arial;
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all">
+      <p class="out">&nbsp;</p>
+    <p>
+      <button onclick="
+        clickButton('1');
+        ">
+        1
+      </button>
+      <button onclick="
+        clickButton('2');
+        ">
+        2
+      </button>
+      <button onclick="
+        clickButton('3');
+        ">
+        3
+      </button>
+      <button class="sign" onclick="
+        clickButton('+');
+        ">
+        +
+      </button>
+    </p>
+    <p>
+      <button onclick="
+        clickButton('4');
+        ">
+        4
+      </button>
+      <button onclick="
+        clickButton('5');
+        ">
+        5
+      </button>
+      <button onclick="
+        clickButton('6');
+        ">
+        6
+      </button>
+      <button class="sign" onclick="
+        clickButton('-');
+        ">
+        -
+      </button>
+    </p>
+    <p>
+      <button onclick="
+        clickButton('7');
+        ">
+        7
+      </button>
+      <button onclick="
+        clickButton('8');
+        ">
+        8
+      </button>
+      <button onclick="
+        clickButton('9');
+        ">
+        9
+      </button>
+      <button class="sign" onclick="
+        clickButton('*');
+        ">
+        *
+      </button>
+    </p>
+    <p>
+      <button onclick="
+        clickButton('0');
+        ">
+        0
+      </button>
+      <button onclick="
+        clickButton('.');
+        ">
+        .
+      </button>
+      <button onclick="
+        calculation = eval(calculation);
+        document.querySelector('.out').innerHTML = calculation;
+        localStorage.setItem('calculation',calculation);
+        ">
+        =
+      </button>
+      <button class="sign" onclick="
+        clickButton('/');
+        ">
+        /
+      </button>
+    </p>
+    <p>
+      <button class="clearButton" onclick="
+        calculation = '';
+        document.querySelector('.out').innerHTML = '&nbsp;';
+        ">
+        Clear
+      </button>
+    </p>
+    </div>
+    <script>
+      let calculation = localStorage.getItem('calculation') || '';
+      function clickButton(item){
+        calculation += item;
+        document.querySelector('.out').innerHTML=calculation;
+      }
+    </script>
+  </body>
+</html>

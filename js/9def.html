@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <input placeholder="Input" class="in" onkeydown="
+    if(event.key==='Enter'){
+      values=document.querySelector('.in').value;
+      document.querySelector('p').innerHTML=`Your name is ${values}`;
+    }
+  ">
+    <button onclick="
+      values=document.querySelector('.in').value;
+      document.querySelector('p').innerHTML=`Your name is ${values}`;
+    ">Submit</button>
+    <p></p>
+  </body>
+</html>

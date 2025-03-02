@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <button onclick="addButton();">Add</button>
+    <button onclick="removeButton();">Remove</button>
+    <p></p>
+    <script>
+      let i=0;
+      function addButton(){
+        document.title=`(${++i}) New message`;
+      };
+      function removeButton(){
+        document.title=`(${--i}) New message`;
+      };
+    </script>
+  </body>
+</html>

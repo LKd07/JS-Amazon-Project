@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <button onclick="addButton();">Add</button>
+    <button onclick="removeButton();">Remove</button>
+    <p></p>
+    <script>
+      let flag=0;
+      function removeEgg(foods){
+        console.log(
+          foods.filter(value=>{
+            if(value==='egg'&&flag<2){
+              flag++;
+              return 0;
+            }
+            else{
+              return 1;
+            }
+          })
+        );}
+      removeEgg(['egg','eggs','egg','egg']);
+    </script>
+  </body>
+</html>

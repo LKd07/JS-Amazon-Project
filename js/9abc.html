@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <button onclick="
+      chosenPart('heads');
+    ">
+      heads  
+    </button>
+    <button onclick="
+      chosenPart('tails');
+    ">
+      tails
+    </button>
+    <p></p>
+    <script>
+      function chosenPart(part){
+        document.querySelector('p').innerHTML=
+        `You chose: ${part}`;
+      }
+    </script>
+  </body>
+</html>
