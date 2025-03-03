@@ -206,9 +206,6 @@
   }
 
   .product-actions {
-    /* grid-column: auto; undos grid-column: 2; from above.
-       This element will now be placed in its normal column
-       in the grid. */
     grid-column: auto;
     margin-bottom: 70px;
   }
