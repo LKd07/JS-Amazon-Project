@@ -1,3 +1,5 @@
+import { renderCheckoutHeader } from "../script/checkout/checkoutHeader.js";
+
 export let cart= JSON.parse(localStorage.getItem('cart')) || [
 {
   productId:'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
@@ -46,11 +48,16 @@ export function removeFromCart(productId){
 }
 
 export function checkout(){
+  let quantity=countQuantity();
+  document.querySelector('.js-cart-checkout-quantity').innerHTML=quantity;
+}
+
+export function countQuantity(){
   let quantity=0;
   cart.forEach((product)=>{
     quantity += product.quantity;
   })
-  document.querySelector('.js-cart-checkout-quantity').innerHTML=quantity;
+  return quantity;
 }
 
 export function updateQuantity(productId,newQuantity){
@@ -59,7 +66,7 @@ export function updateQuantity(productId,newQuantity){
       product.quantity=newQuantity;
     }
   });
-  checkout();
+  renderCheckoutHeader();
   saveToStorage();
 }
 
