@@ -1,5 +1,12 @@
 import { cart, addToCart, checkout } from "../data/cart.js";
-import { products } from "../data/products.js";
+import { products,search } from "../data/products.js";
+
+const url = new URL(window.location.href);
+const mySearch = url.searchParams.get('search');
+let newProducts = [];
+if(mySearch){
+  newProducts=search(mySearch.toLowerCase());
+}
 
 let productHTML= '';
 products.forEach((product)=>{
@@ -82,3 +89,14 @@ document.querySelectorAll('.js-add-to-cart')
 });
 
 checkout();
+
+document.querySelector('.js-search-button').addEventListener('click',()=>{
+  const searchContent = document.querySelector('.js-search-bar').value;
+  window.location.href = `amazon.html?search=${searchContent}`;
+});
+document.body.addEventListener('keydown',(event)=>{
+  if(event.key==='Enter'){
+    const searchContent = document.querySelector('.js-search-bar').value;
+    window.location.href = `amazon.html?search=${searchContent}`;
+  }
+});

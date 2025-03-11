@@ -9,18 +9,42 @@ export function getProduct(productId){
   return matchingProduct;
 }
 
+export function search(mySearch){
+  let newProducts=[];
+  if(mySearch){
+    products.forEach((product)=>{
+      let flag=1;
+      if(product.name.toLowerCase().includes(mySearch)){
+        newProducts.push(product);
+        flag=0;
+      }
+      if(flag){
+        product.keywords.forEach((keyword)=>{
+          if(keyword.toLowerCase().includes(mySearch)){
+            newProducts.push(product);
+          }
+        });
+      }
+    });
+    products=newProducts;
+  }
+  return newProducts;
+}
+
 class Product{
   id;
   image;
   name;
   rating;
   priceCents;
+  keywords;
   constructor(productDetails){
     this.id=productDetails.id;
     this.image=productDetails.image;
     this.name=productDetails.name;
     this.rating=productDetails.rating;
     this.priceCents=productDetails.priceCents;
+    this.keywords=productDetails.keywords;
   }
 
   getStarsURL(){
@@ -48,7 +72,7 @@ class Clothing extends Product{
   }
 }
 
-export const products = [
+export let products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",

@@ -2,9 +2,10 @@ import { orders } from "../data/orders.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { formatCurrency } from "./utils/money.js";
 import { getProduct } from "../data/products.js";
-import { addToCart } from "../data/cart.js";
+import { addToCart, checkout } from "../data/cart.js";
 
 export function generateOrders(){
+  checkout();
   let ordersHTML = '';
   orders.forEach((order)=>{
     const orderTime = dayjs(order.orderTime).format('MMMM D');
@@ -69,7 +70,18 @@ export function generateOrders(){
     buyAgainButton.addEventListener('click',()=>{
       const productId=buyAgainButton.dataset.buyAgainButton;
       addToCart(productId,1);
+      checkout();
     });
+  });
+  document.querySelector('.js-search-button').addEventListener('click',()=>{
+    const searchContent = document.querySelector('.js-search-bar').value;
+    window.location.href = `amazon.html?search=${searchContent}`;
+  });
+  document.body.addEventListener('keydown',(event)=>{
+    if(event.key==='Enter'){
+      const searchContent = document.querySelector('.js-search-bar').value;
+      window.location.href = `amazon.html?search=${searchContent}`;
+    }
   });
 }
 generateOrders();

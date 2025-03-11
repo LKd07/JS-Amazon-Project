@@ -1,8 +1,10 @@
 import { orders } from "../data/orders.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { getProduct } from "../data/products.js";
+import { checkout } from "../data/cart.js";
 
 function tracking(){
+  checkout();
   let trackingHTML;
   let matchingOrder;
   let matchingProduct;
@@ -64,5 +66,15 @@ function tracking(){
 </div>
   `
 document.querySelector('.js-order-tracking').innerHTML=trackingHTML;
+document.querySelector('.js-search-button').addEventListener('click',()=>{
+  const searchContent = document.querySelector('.js-search-bar').value;
+  window.location.href = `amazon.html?search=${searchContent}`;
+});
+document.body.addEventListener('keydown',(event)=>{
+  if(event.key==='Enter'){
+    const searchContent = document.querySelector('.js-search-bar').value;
+    window.location.href = `amazon.html?search=${searchContent}`;
+  }
+});
 }
 tracking();
