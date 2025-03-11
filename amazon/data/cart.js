@@ -78,3 +78,8 @@ export function updateDeliveryOption(productId,deliveryOptionId){
   });
   saveToStorage();
 }
+
+export function clearCart(){
+  cart=[];
+  saveToStorage();
+}

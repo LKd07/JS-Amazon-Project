@@ -1,6 +1,6 @@
 import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
-import { cart, countQuantity } from "../../data/cart.js";
+import { cart, clearCart, countQuantity } from "../../data/cart.js";
 import { formatCurrency } from "../utils/money.js";
 import { addOrder } from "../../data/orders.js";
 
@@ -71,6 +71,7 @@ export function paymentSummary(){
 
     const order = await response.json();
     addOrder(order);
+    clearCart();
     window.location.href='orders.html';
   });
 }
